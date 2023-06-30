@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info.css">
+    <title>Jogo da Velha</title>
+</head>
+
+<body onload="carregandof()">
+    <div id="vireCell">
+        <div style="margin: 20px 0px;"><span class="material-icons">screen_rotation</span></div>
+        <p id="pvireCell">Vire o celular</p>
+    </div>
+    <div id="carregando">
+        <div style="margin: 20px 0px;" id="carregar"></div>
+        <p id="pcarregar">Carregando...</p>
+    </div>
+    <section id="conteudo">
+        <div id="infoDiv">
+            <div id="X" class="btn" onclick="fecharInfo()">X</div>
+            <h2>Personalizando</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ipsum cum, numquam quisquam doloremque
+                neque
+                dolore, libero nisi repellendus modi expedita. Laudantium, tenetur aspernatur! Ad magnam maxime
+                accusantium
+                vero fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, officia dolor
+                repellendus recusandae id voluptates in assumenda sapiente qui repudiandae! Recusandae aspernatur
+                perferendis corporis nisi similique vitae, reprehenderit ab. Debitis!
+            </p>
+            <div id="okDiv">
+                <div class="btn" onclick="fecharInfo()">Ok</div>
+            </div>
+        </div>
+
+        <nav>
+            <abbr title="Voltar">
+                <div id="btnprev" class="btn desativado" onclick="prev()">
+                    <p id="pbtnprev" style="display:none;">Computador</p>
+                    <span class="material-icons">west</span>
+                </div>
+            </abbr>
+            <abbr title="Avançar">
+                <div id="btnnext" class="btn" onclick="next()">
+                    <p id="pbtnnext">Multiplayer</p>
+                    <span class="material-icons">east</span>
+                </div>
+            </abbr>
+        </nav>
+
+        <section id="jogoCpu">
+
+            <abbr title="Personalizar">
+                <div class="infoJogador" onclick="infoJogadores(this)">
+                    <div class="infoEsc">
+                        <div class="informaçõesDiv">
+                            <div class="imgNome">
+                                <div class="imgDiv">
+                                    <label for="imgInput1" class="labelFile" onclick="imagemAvatar(0)"></label>
+                                    <input type="file" name="" id="imgInput1" class="imgInput"
+                                        accept="image/jpeg, image/jpg, image/png, image/webp" style="display:none;">
+                                </div>
+                                <div class="quemTextDiv">
+                                    <div class="quemE">Jogador</div>
+                                    <div class="textDiv"><input type="text" name="nomeDoJogador" maxlength="25"
+                                            class="nomeInput" placeholder="Digite o seu nome aqui"></div>
+                                </div>
+                            </div>
+                            <div class="color">
+                                <label for="corInputId" class="labelColor">Escolha a sua cor:</label>
+                                <input type="color" name="" id="corInputId" class="corInput" value="#3232ff"
+                                    oninput="outColorc()">
+                            </div>
+                        </div>
+                        <div class="escolhaOXDiv">
+                            <abbr title="Escolher X">
+                                <div class="escolhaOXc" onclick="escolhidoOXc(0)"><span>X</span></div>
+                            </abbr>
+                            <abbr title="Escolher O">
+                                <div class="escolhaOXc" onclick="escolhidoOXc(1)"><span>O</span></div>
+                            </abbr>
+                        </div>
+                    </div>
+                    <div class="OXDiv"></div>
+                </div>
+            </abbr>
+
+
+            <div id="infoJogadorCpu" class="infoJogador2" onclick="infoJogadores(this)">
+                <div class="infoJogador2Div">
+                    <div class="OXDiv" id="OXDivC"></div>
+                    <div class="informaçõesDiv">
+                        <div class="imgNome2">
+                            <div id="imgDiv2Cpu" class="imgDiv2">
+                                <label for="imgInputId" id="labelFile2Cpu" class="labelFile2"></label>
+                                <input type="file" name="" class="imgInput" id="imgInputId"
+                                    accept="image/jpeg, image/jpg, image/png, image/webp" style="display:none;">
+                            </div>
+                            <div class="quemTextDiv2">
+                                <div id="quemE2Cpu" class="quemE2">Computador</div>
+                                <div id="textDiv2Cpu" class="textDiv2"><input type="text" name="nomeDoJogador"
+                                        value="Inteligência Artificial" class="nomeInput2"></div>
+                            </div>
+                        </div>
+                        <div id="color2Cpu" class="color2">
+                            <label for="corInput2Id" class="labelColor2">Cor escolhida:</label>
+                            <input type="color" name="" id="corInput2Id" class="corInput2" value="#ff0000"
+                                oninput="outColorc()">
+                        </div>
+                    </div>
+                </div>
+                <div class="loader">
+                    <span id="dot1" class="dot"></span>
+                    <span id="dot2" class="dot"></span>
+                    <span id="dot3" class="dot"></span>
+                </div>
+            </div>
+
+            <div class="divPlay">
+                <h1>Computador</h1>
+                <abbr title="Play">
+                    <div class="btnPlay" onclick="play1()"><span class="material-icons tam">play_arrow</span></div>
+                </abbr>
+            </div>
+            <abbr title="Como jogar">
+                <div class="btn btnInfo" onclick="abrirInfo()"><span class="material-icons">question_mark</span></div>
+            </abbr>
+            <div class="pontosDiv">
+                <div id="pontosJ1c"></div>
+                <div id="pontosJ2c"></div>
+                <abbr title="Reiniciar placar">
+                    <div onclick="reiniciandoPontosc()" class="btnP">
+                        <span class="material-icons">refresh</span>
+                    </div>
+                </abbr>
+            </div>
+            <div class="jogo">
+                <abbr title="Sortear">
+                    <div class="sorte" onclick="sortearc()"><span>Sortear</span></div>
+                </abbr>
+                <div id="nivelDiv">
+                    <label for="selectNivel">Nível:</label>
+                    <select name="" id="selectNivel" value="s">
+                        <option value="s" selected></option>
+                        <option value="f">Fácil</option>
+                        <option value="d">Difícil</option>
+                    </select>
+                </div>
+                <div class="jogoBtnDiv">
+                    <abbr title="Tela inicial">
+                        <div class="btn btnVoltar" onclick="voltar()"><span class="material-icons">home</span></div>
+                    </abbr>
+                    <div class="jogoDaVelha" id="jdvc">
+                        <div id="cc1" class="cerca">
+                            <div id="pc1" class="quadradosc livre" onclick="jogarCpu(1)" oninput="outColorc()">
+                                <div id="pc1OX" class="face front"></div>
+                                <div id="pc1OX2" class="face back"></div>
+                                <div id="pc1OX3" class="face right"></div>
+                                <div id="pc1OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc2" class="cerca">
+                            <div id="pc2" class="quadradosc livre" onclick="jogarCpu(2)" oninput="outColorc()">
+                                <div id="pc2OX" class="face front"></div>
+                                <div id="pc2OX2" class="face back"></div>
+                                <div id="pc2OX3" class="face right"></div>
+                                <div id="pc2OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc3" class="cerca">
+                            <div id="pc3" class="quadradosc livre" onclick="jogarCpu(3)" oninput="outColorc()">
+                                <div id="pc3OX" class="face front"></div>
+                                <div id="pc3OX2" class="face back"></div>
+                                <div id="pc3OX3" class="face right"></div>
+                                <div id="pc3OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc4" class="cerca">
+                            <div id="pc4" class="quadradosc livre" onclick="jogarCpu(4)" oninput="outColorc()">
+                                <div id="pc4OX" class="face front"></div>
+                                <div id="pc4OX2" class="face back"></div>
+                                <div id="pc4OX3" class="face right"></div>
+                                <div id="pc4OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc5" class="cerca">
+                            <div id="pc5" class="quadradosc livre" onclick="jogarCpu(5)" oninput="outColorc()">
+                                <div id="pc5OX" class="face front"></div>
+                                <div id="pc5OX2" class="face back"></div>
+                                <div id="pc5OX3" class="face right"></div>
+                                <div id="pc5OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc6" class="cerca">
+                            <div id="pc6" class="quadradosc livre" onclick="jogarCpu(6)" oninput="outColorc()">
+                                <div id="pc6OX" class="face front"></div>
+                                <div id="pc6OX2" class="face back"></div>
+                                <div id="pc6OX3" class="face right"></div>
+                                <div id="pc6OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc7" class="cerca">
+                            <div id="pc7" class="quadradosc livre" onclick="jogarCpu(7)" oninput="outColorc()">
+                                <div id="pc7OX" class="face front"></div>
+                                <div id="pc7OX2" class="face back"></div>
+                                <div id="pc7OX3" class="face right"></div>
+                                <div id="pc7OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc8" class="cerca">
+                            <div id="pc8" class="quadradosc livre" onclick="jogarCpu(8)" oninput="outColorc()">
+                                <div id="pc8OX" class="face front"></div>
+                                <div id="pc8OX2" class="face back"></div>
+                                <div id="pc8OX3" class="face right"></div>
+                                <div id="pc8OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="cc9" class="cerca">
+                            <div id="pc9" class="quadradosc livre" onclick="jogarCpu(9)" oninput="outColorc()">
+                                <div id="pc9OX" class="face front"></div>
+                                <div id="pc9OX2" class="face back"></div>
+                                <div id="pc9OX3" class="face right"></div>
+                                <div id="pc9OX4" class="face left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <abbr title="Atualizar">
+                        <div onclick="reiniciandoc()" class="btnatu btn"><span class="material-icons">refresh</span>
+                        </div>
+                    </abbr>
+                </div>
+        </section>
+
+        <section id="jogoMult">
+
+            <abbr title="Personalizar">
+                <div class="infoJogador" onclick="infoJogadores(this)">
+                    <div class="infoEsc">
+
+                        <div class="informaçõesDiv">
+                            <div class="imgNome">
+                                <div class="imgDiv">
+                                    <label for="imgInput1.5" class="labelFile"
+                                        onclick="imagemAvatar(1)"></label>
+                                    <input type="file" name="" id="imgInput1.5" class="imgInput"
+                                        accept="image/jpeg, image/jpg, image/png, image/webp" style="display:none;">
+                                </div>
+                                <div class="quemTextDiv">
+                                    <div class="quemE">Jogador 1</div>
+                                    <div class="textDiv"><input type="text" name="nomeDoJogador" maxlength="25"
+                                            class="nomeInput" placeholder="Digite o seu nome aqui"></div>
+                                </div>
+                            </div>
+                            <div class="color">
+                                <label for="corInputId" class="labelColor">Escolha a sua cor:</label>
+                                <input type="color" name="" id="corInputId" class="corInput" value="#3232ff"
+                                    oninput="outColor();outColor1()">
+                            </div>
+                        </div>
+                        <div class="escolhaOXDiv">
+                            <abbr title="Escolher X">
+                                <div class="escolhaOX" onclick="escolhidoOX(0)"><span>X</span></div>
+                            </abbr>
+                            <abbr title="Escolher O">
+                                <div class="escolhaOX" onclick="escolhidoOX(1)"><span>O</span></div>
+                            </abbr>
+                        </div>
+                    </div>
+                    <div class="OXDiv"></div>
+                </div>
+            </abbr>
+
+            <abbr title="Personalizar">
+                <div class="infoJogador2" onclick="infoJogadores(this)">
+                    <div class="OXDiv"></div>
+                    <div class="infoEsc">
+                        <div class="informaçõesDiv">
+                            <div class="imgNome2">
+                                <div class="imgDiv2">
+                                    <label for="imgInput2" class="labelFile2"
+                                        onclick="imagemAvatar(2)"></label>
+                                    <input type="file" name="" id="imgInput2" class="imgInput"
+                                        accept="image/jpeg, image/jpg, image/png, image/webp" style="display:none;">
+                                </div>
+                                <div class="quemTextDiv2">
+                                    <div class="quemE2">Jogador 2</div>
+                                    <div class="textDiv2"><input type="text" name="nomeDoJogador" maxlength="25"
+                                            class="nomeInput2" placeholder="Digite o seu nome aqui"></div>
+                                </div>
+                            </div>
+                            <div class="color2">
+                                <label for="corInput22Id" class="labelColor2">Escolha a sua cor:</label>
+                                <input type="color" name="" id="corInput22Id" class="corInput2" value="#32ff32"
+                                    oninput="outColor(),outColor2()">
+                            </div>
+                        </div>
+                        <div class="escolhaOXDiv">
+                            <abbr title="Escolher X">
+                                <div class="escolhaOX escolhaOX23" onclick="escolhidoOX(2)"><span>X</span></div>
+                            </abbr>
+                            <abbr title="Escolher O">
+                                <div class="escolhaOX escolhaOX23" onclick="escolhidoOX(3)"><span>O</span></div>
+                            </abbr>
+                        </div>
+                    </div>
+                </div>
+            </abbr>
+
+            <div class="divPlay">
+                <h1>Multiplayer</h1>
+                <abbr title="Play">
+                    <div class="btnPlay" onclick="play2()"><span class="material-icons tam">play_arrow</span></div>
+                </abbr>
+            </div>
+            <abbr title="Como jogar">
+                <div class="btn btnInfo" onclick="abrirInfo()"><span class="material-icons">question_mark</span></div>
+            </abbr>
+            <div class="pontosDiv">
+                <div id="pontosJ1"></div>
+                <div id="pontosJ2"></div>
+                <abbr title="Reiniciar placar">
+                    <div onclick="reiniciandoPontos()" class="btnP">
+                        <span class="material-icons">refresh</span>
+                    </div>
+                </abbr>
+            </div>
+            <div class="jogo">
+                <abbr title="Sortear">
+                    <div id="sorteId" class="sorte" onclick="sortear()"><span>Sortear</span></div>
+                </abbr>
+                <div class="jogoBtnDiv">
+                    <abbr title="Tela inicial">
+                        <div class="btn btnVoltar" onclick="voltar2()"><span class="material-icons">home</span></div>
+                    </abbr>
+                    <div class="jogoDaVelha" id="jdv">
+                        <div id="c1" class="cerca">
+                            <div id="p1" class="quadrados livre" onclick="jogarMult(1)" oninput="outColor()">
+                                <div id="p1OX" class="face front"></div>
+                                <div id="p1OX2" class="face back"></div>
+                                <div id="p1OX3" class="face right"></div>
+                                <div id="p1OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c2" class="cerca">
+                            <div id="p2" class="quadrados livre" onclick="jogarMult(2)" oninput="outColor()">
+                                <div id="p2OX" class="face front"></div>
+                                <div id="p2OX2" class="face back"></div>
+                                <div id="p2OX3" class="face right"></div>
+                                <div id="p2OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c3" class="cerca">
+                            <div id="p3" class="quadrados livre" onclick="jogarMult(3)" oninput="outColor()">
+                                <div id="p3OX" class="face front"></div>
+                                <div id="p3OX2" class="face back"></div>
+                                <div id="p3OX3" class="face right"></div>
+                                <div id="p3OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c4" class="cerca">
+                            <div id="p4" class="quadrados livre" onclick="jogarMult(4)" oninput="outColor()">
+                                <div id="p4OX" class="face front"></div>
+                                <div id="p4OX2" class="face back"></div>
+                                <div id="p4OX3" class="face right"></div>
+                                <div id="p4OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c5" class="cerca">
+                            <div id="p5" class="quadrados livre" onclick="jogarMult(5)" oninput="outColor()">
+                                <div id="p5OX" class="face front"></div>
+                                <div id="p5OX2" class="face back"></div>
+                                <div id="p5OX3" class="face right"></div>
+                                <div id="p5OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c6" class="cerca">
+                            <div id="p6" class="quadrados livre" onclick="jogarMult(6)" oninput="outColor()">
+                                <div id="p6OX" class="face front"></div>
+                                <div id="p6OX2" class="face back"></div>
+                                <div id="p6OX3" class="face right"></div>
+                                <div id="p6OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c7" class="cerca">
+                            <div id="p7" class="quadrados livre" onclick="jogarMult(7)" oninput="outColor()">
+                                <div id="p7OX" class="face front"></div>
+                                <div id="p7OX2" class="face back"></div>
+                                <div id="p7OX3" class="face right"></div>
+                                <div id="p7OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c8" class="cerca">
+                            <div id="p8" class="quadrados livre" onclick="jogarMult(8)" oninput="outColor()">
+                                <div id="p8OX" class="face front"></div>
+                                <div id="p8OX2" class="face back"></div>
+                                <div id="p8OX3" class="face right"></div>
+                                <div id="p8OX4" class="face left"></div>
+                            </div>
+                        </div>
+                        <div id="c9" class="cerca">
+                            <div id="p9" class="quadrados livre" onclick="jogarMult(9)" oninput="outColor()">
+                                <div id="p9OX" class="face front"></div>
+                                <div id="p9OX2" class="face back"></div>
+                                <div id="p9OX3" class="face right"></div>
+                                <div id="p9OX4" class="face left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <abbr title="Atualizar">
+                        <div onclick="reiniciando()" class="btnatu btn">
+                            <span class="material-icons">refresh</span>
+                        </div>
+                    </abbr>
+                </div>
+            </div>
+        </section>
+        <a href="https://github.com/mwd-oficial" target="_blank"><img src="logoMWDt.png" alt="" id="logoMWD"></a>
+    </section>
+    <script src="script/mult.js"></script>
+    <script src="script/cpu.js"></script>
+    <script src="script/script.js"></script>
+</body>
+
+</html>

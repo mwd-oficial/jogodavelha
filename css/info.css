@@ -1,0 +1,483 @@
+@charset "UTF-8";
+
+:root {
+  --corInput: #3232ff;
+  --corInput2: #32ff32;
+}
+
+.infoJogador,
+.infoJogador2 {
+  animation: animaInfo 1s linear infinite;
+  transform: scale(0.9);
+}
+
+@keyframes animaInfo {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.infoEsc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.escolhaOXcDiv,
+.escolhaOXDiv {
+  position: relative;
+  top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.escolhaOXc,
+.escolhaOX {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--corInput);
+  width: 110px;
+  padding: 7px 12.5px;
+  border-radius: 10px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.escolhaOX23 {
+  background-color: var(--corInput2);
+}
+
+.escolhaOXc:hover,
+.escolhaOX:hover {
+  transform: scale(1.05);
+}
+
+.escolhaOXc span,
+.escolhaOX span {
+  position: relative;
+  z-index: 1;
+}
+
+.escolhaOXc::before,
+.escolhaOX::before {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  background-color: white;
+  border-radius: 7.5px;
+  transition: 0.5s;
+}
+
+.escolhaOXc:hover::before,
+.escolhaOX:hover::before {
+  opacity: 0.7;
+}
+
+.escolhaOXc.clicado::before,
+.escolhaOX.clicado::before {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  background-color: white;
+  border-radius: 7.5px;
+  transition: 0.5s;
+  opacity: 0.6;
+}
+
+.escolhaOXc::after,
+.escolhaOX::after {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  background-color: var(--corInput);
+  border-radius: 7.5px;
+  transition: 0.5s;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.escolhaOX23::after {
+  background-color: var(--corInput2);
+}
+
+.escolhaOXc:hover::after,
+.escolhaOX:hover::after {
+  opacity: 1;
+}
+
+.escolhaOXcGray,
+.escolhaOXGray {
+  filter: grayscale(1);
+}
+.escolhaOXcGray::before,
+.escolhaOXGray::before {
+  background-color: var(--corInput);
+}
+.escolhaOXcGray:hover,
+.escolhaOXGray:hover {
+  transform: none;
+  cursor: default;
+}
+.escolhaOXcGray::after,
+.escolhaOXGray::after {
+  filter: none;
+}
+.escolhaOXcGray:hover::after,
+.escolhaOXGray:hover::after {
+  opacity: 0;
+}
+
+/*Configuração para o lado esquerdo ------------------------------- */
+.infoJogador {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  opacity: 0;
+  transition-duration: 0.5s;
+  display: none;
+}
+
+.imgNome {
+  width: 300px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.imgDiv {
+  width: 75px;
+  height: 75px;
+  background-color: #005;
+  border: 2.5px solid #3232ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textDiv {
+  position: relative;
+  left: -10px;
+  width: 220px;
+  height: 40px;
+  background-color: #005;
+  border: 2.5px solid #3232ff;
+  border-left: none;
+  border-radius: 0px 1000px 1000px 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nomeInput {
+  background-color: #005;
+  color: white;
+  border-radius: 0px 1000px 1000px 0px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.nomeInput:focus {
+  background-color: #007;
+  border: 2.5px solid #00c;
+}
+
+.quemTextDiv {
+  position: relative;
+}
+
+.quemE {
+  position: absolute;
+  padding: 0px 20px;
+  width: 110px;
+  top: -16px;
+  left: -29px;
+  font-size: 12px;
+  background-color: #3232ff;
+  z-index: -1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.color {
+  width: 80%;
+  position: relative;
+  top: -20px;
+  padding: 10px;
+  text-align: left;
+  background-color: #005;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2.5px solid #3232ff;
+}
+
+.labelFile {
+  display: inline-block;
+  background-color: white;
+  background-image: url("../avatar.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="color"] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.labelColor {
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.OXDiv {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  position: relative;
+  top: -20px;
+}
+
+#OXDivC {
+  top: 0;
+}
+
+.informaçõesDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*Configuração para o lado direito ------------------------------- */
+.loader {
+  position: relative;
+  top: 0;
+  left: 50px;
+}
+.dot {
+  display: inline-block;
+  margin: 0.125em;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 1em;
+  background: black;
+  animation: none;
+  display: none;
+}
+#dot2 {
+  animation-delay: 0.1875s;
+}
+#dot3 {
+  animation-delay: 0.375s;
+}
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-0.25em);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(0.25em);
+  }
+}
+
+#infoJogadorCpu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.infoJogador2Div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.infoJogador2 {
+  position: absolute;
+  top: 5px;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition-duration: 0.5s;
+  display: none;
+}
+
+#infoJogadorCpu {
+  pointer-events: none;
+  animation: none;
+}
+
+.imgNome2 {
+  width: 300px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  z-index: 3;
+}
+
+.imgDiv2 {
+  width: 75px;
+  height: 75px;
+  background-color: #005;
+  border: 2.5px solid #afff00;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textDiv2 {
+  position: relative;
+  right: -10px;
+  width: 220px;
+  height: 40px;
+  background-color: #005;
+  border: 2.5px solid #32ff32;
+  border-right: none;
+  border-radius: 1000px 0px 0px 1000px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#imgDiv2Cpu,
+#textDiv2Cpu,
+#color2Cpu {
+  border: 2.5px solid #f00;
+}
+
+#textDiv2Cpu {
+  border-right: none;
+}
+
+.nomeInput2 {
+  background-color: #005;
+  color: white;
+  border-radius: 1000px 0px 0px 1000px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 5px;
+  text-align: right;
+}
+
+.nomeInput2:focus {
+  background-color: #007;
+  border: 2.5px solid #00c;
+}
+
+.quemTextDiv2 {
+  position: relative;
+}
+
+.quemE2 {
+  position: absolute;
+  padding: 0px 5px;
+  width: 110px;
+  top: -16px;
+  right: -29px;
+  font-size: 12px;
+  background-color: #32ff32;
+  z-index: -1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+#quemE2Cpu {
+  background-color: red;
+}
+
+.color2 {
+  width: 80%;
+  position: relative;
+  top: -20px;
+  padding: 10px;
+  text-align: left;
+  background-color: #005;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2.5px solid #32ff32;
+}
+
+.labelFile2 {
+  display: inline-block;
+  background-color: white;
+  background-image: url("../avatar.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="color"] {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.labelColor2 {
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#labelFile2Cpu {
+  background-image: url("../terminator.webp");
+}
