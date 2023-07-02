@@ -7,15 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="all">
     <link rel="stylesheet" href="css/info.css">
     <title>Jogo da Velha</title>
 </head>
 
 <body onload="carregandof()">
     <div id="vireCell">
-        <div style="margin: 20px 0px;"><span class="material-icons">screen_rotation</span></div>
-        <p id="pvireCell">Vire o celular</p>
+        <div style="margin: 20px 0px;"><span class="material-icons">
+            laptop_windows
+            </span></div>
+        <p id="pvireCell">Este site está disponível apenas para computadores.</p>
     </div>
     <div id="carregando">
         <div style="margin: 20px 0px;" id="carregar"></div>
@@ -127,9 +129,6 @@
                     <div class="btnPlay" onclick="play1()"><span class="material-icons tam">play_arrow</span></div>
                 </abbr>
             </div>
-            <abbr title="Como jogar">
-                <div class="btn btnInfo" onclick="abrirInfo()"><span class="material-icons">question_mark</span></div>
-            </abbr>
             <div class="pontosDiv">
                 <div id="pontosJ1c"></div>
                 <div id="pontosJ2c"></div>

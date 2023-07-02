@@ -86,6 +86,7 @@ body {
 }
 
 #pcarregar, #pvireCell {
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   color: black;
@@ -95,18 +96,6 @@ body {
 @keyframes preload {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media screen and (orientation:portrait) {
-  #carregando {
-    display: none;
-  }
-  #conteudo {
-    display: none;
-  }
-  #vireCell {
-    display: flex;
   }
 }
 
@@ -132,7 +121,7 @@ abbr {
   align-items: center;
   flex-direction: column;
   transition-duration: 2s;
-  transform: translate(0, 100vh);
+  transform: translate(0, 150vh);
   gap: 20px;
 }
 
@@ -236,23 +225,9 @@ p {
   z-index: 10;
 }
 
-.btnInfo {
-  position: absolute;
-  top: 90vh;
-  left: 20px;
-  transform: scale(1);
-  display: none;
-  opacity: 0;
-  transition-duration: 0.5s;
-}
-
 #okDiv div:hover,
 #X:hover {
   transform: translate(0, 0) scale(1.1);
-}
-
-.btnInfo:hover {
-  transform: scale(1.1) !important;
 }
 
 .pontosDiv {
@@ -392,6 +367,7 @@ p {
   transform: translate(0, 0);
   animation: none;
   font-family: var(--negrito);
+  overflow: hidden;
 }
 
 @keyframes avançar {
@@ -420,6 +396,7 @@ p {
   transform: translate(100%, 0);
   animation: none;
   font-family: var(--negrito);
+  overflow: hidden;
 }
 
 @keyframes voltar {

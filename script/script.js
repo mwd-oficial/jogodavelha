@@ -1,8 +1,14 @@
 var carregando = document.getElementById("carregando")
+var vireCell = document.getElementById("vireCell")
 function carregandof() {
     setTimeout(() => {
-        carregando.style.display = "none"
-        conteudo.style.display = "block"
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            carregando.style.display = "none"
+            conteudo.style.display = "block"
+        } else {
+            carregando.style.display = "none"
+            vireCell.style.display = "flex"
+        }
     }, 500);
 }
 
@@ -244,18 +250,4 @@ function imagemAvatar(ind) {
 
 function infoJogadores(obj) {
     obj.style.animation = "none"
-}
-
-var infoDiv = document.getElementById("infoDiv")
-function abrirInfo() {
-    infoDiv.style.display = "block"
-    setTimeout(() => {
-        infoDiv.style.opacity = 1
-    }, 1);
-}
-function fecharInfo() {
-    infoDiv.style.opacity = 0
-    setTimeout(() => {
-        infoDiv.style.display = "none"
-    }, 500);
 }
