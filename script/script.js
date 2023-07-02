@@ -35,8 +35,8 @@ setInterval(() => {
 
 function next() {
     reiniciandoc()
-    btnInfo[0].style.opacity = 0
-    btnInfo[0].style.display = "none"
+
+
     pontosDiv[0].style.opacity = 0
     pontosDiv[0].style.display = "none"
     jogoCpu.style.animation = "avançar 1s linear"
@@ -66,8 +66,8 @@ function next() {
 
 function prev() {
     reiniciando()
-    btnInfo[1].style.opacity = 0
-    btnInfo[1].style.display = "none"
+
+
     pontosDiv[1].style.opacity = 0
     pontosDiv[1].style.display = "none"
     jogoCpu.style.animation = "voltar 1s linear"
@@ -99,7 +99,6 @@ var jogos = document.getElementsByClassName("jogo")
 var divPlay = document.getElementsByClassName("divPlay")
 var infoJogador = document.getElementsByClassName("infoJogador")
 var infoJogador2 = document.getElementsByClassName("infoJogador2")
-var btnInfo = document.getElementsByClassName("btnInfo")
 var pontosDiv = document.getElementsByClassName("pontosDiv")
 function play1() {
     pJ1c = 0
@@ -107,7 +106,7 @@ function play1() {
     jogos[0].style.transitionDuration = "2s"
     divPlay[0].style.opacity = 0
     jogos[0].style.opacity = 1
-    btnInfo[0].style.display = "flex"
+
     pontosDiv[0].style.display = "flex"
     
     setTimeout(() => {
@@ -117,7 +116,7 @@ function play1() {
     }, 1);
     setTimeout(() => {
         divPlay[0].style.display = "none"
-        btnInfo[0].style.opacity = 1
+    
         pontosDiv[0].style.opacity = 1
         infoJogador[0].style.opacity = 1
         infoJogador2[0].style.opacity = 1
@@ -138,7 +137,7 @@ function play2() {
     jogos[1].style.transitionDuration = "2s"
     divPlay[1].style.opacity = 0
     jogos[1].style.opacity = 1
-    btnInfo[1].style.display = "flex"
+
     pontosDiv[1].style.display = "flex"
     setTimeout(() => {
         jogos[1].style.transform = "translate(0,0)"
@@ -147,7 +146,7 @@ function play2() {
     }, 1);
     setTimeout(() => {
         divPlay[1].style.display = "none"
-        btnInfo[1].style.opacity = 1
+    
         pontosDiv[1].style.opacity = 1
         infoJogador[1].style.opacity = 1
         infoJogador2[1].style.opacity = 1
@@ -157,8 +156,8 @@ function play2() {
 
 function voltar() {
     jogoCpu.style.backgroundImage = `linear-gradient(to top, ${corInput[0].value}, transparent, transparent, transparent)`
-    btnInfo[0].style.opacity = 0
-    btnInfo[0].style.display = "none"
+
+
     pontosDiv[0].style.opacity = 0
     pontosDiv[0].style.display = "none"
     
@@ -178,8 +177,8 @@ function voltar() {
 }
 
 function voltar2() {
-    btnInfo[1].style.opacity = 0
-    btnInfo[1].style.display = "none"
+
+
     pontosDiv[1].style.opacity = 0
     pontosDiv[1].style.display = "none"
 
